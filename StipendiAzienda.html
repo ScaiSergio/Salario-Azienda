@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Stipendi Azienda</title>
+    <script>
+        let stipendi_azienda = {
+            Pippo: 1000,
+            Pluto: 1500
+        };
+
+        function sommaSalari() {
+            let totaleSalari = Object.values(stipendi_azienda).reduce((acc, cur) => acc + cur, 0);
+            document.getElementById('risultato').innerHTML = "Totale salari: " + totaleSalari;
+        }
+
+        function cancellaSalario() {
+            let utente = document.getElementById('utente').value;
+            if (utente in stipendi_azienda) {
+                delete stipendi_azienda[utente];
+                document.getElementById('risultato').innerHTML = "Salario di " + utente + " cancellato.";
+            } else {
+                document.getElementById('risultato').innerHTML = "Utente non trovato.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Gestione Stipendi Azienda</h1>
+    
+    <button onclick="sommaSalari()">Calcola Totale Salari</button>
+    <button onclick="cancellaSalario()">Cancella Salario</button>
+
+    <br><br>
+    
+    <label for="utente">Nome Utente:</label>
+    <input type="text" id="utente" />
+
+    <br><br>
+
+    <p id="risultato"></p>
+</body>
+</html>
